@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api연습</title>
+    <!-- <script deferx src="./api_test.js"></script> -->
+  </head>
+  <body>
+    <h1>내사이트임ㅇㅇ</h1>
+    <ul></ul>
+    <script>
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          // Authorization:
+          // 인증키  4366736a41676b7331303174666a4a71
+        },
+      };
+      fetch(
+        "http://openAPI.seoul.go.kr:8088/4366736a41676b7331303174666a4a71/json/SJWPerform/1/5",
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          const body = document.querySelector("body");
+          let list = response.SJWPerform.row;
+          const ul = document.querySelector("ul");
+          // console.log(list[0]);
+          // body.append(list[0].AGE);
+          for (item of list) {
+            const li = document.createElement("li");
+            li.append(item.TITLE);
+            ul.append(li);
+          }
+        })
+        .catch((err) => console.error(err));
+    </script>
+  </body>
+</html>
