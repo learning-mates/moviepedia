@@ -7,7 +7,7 @@ const options = {
   },
 };
 fetch(
-  "http://openAPI.seoul.go.kr:8088/4366736a41676b7331303174666a4a71/json/SJWPerform/1/5",
+  "http://openAPI.seoul.go.kr:8088/4366736a41676b7331303174666a4a71/json/SJWPerform/1/130",
   options
 )
   .then((response) => response.json())
@@ -39,6 +39,13 @@ fetch(
       div.append(day);
 
       ul.setAttribute("style", "display: flex");
+
+      // const arr = createElement("new_Array");
+    
+      // var1.append[div];
+      // console.log(var1)
+    
+
     }
   })
   .catch((err) => console.error(err));
