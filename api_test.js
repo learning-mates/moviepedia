@@ -16,8 +16,9 @@ fetch(
     const body = document.querySelector("body"); //html body태그를 선택함
     let list = response.SJWPerform.row; //응답받은 값의 row 배열을 받음
     const ul = document.querySelector("ul"); // ul 태그 선택
+    let date = querySelector("newDate"); //오늘 날짜 뽑아주기
     // console.log(list[0]);
-    // body.append(list[0].AGE);
+    // body.append(list[0].AGE); 잘 나오는지 확인!!
     for (item of list) {
       //이 리스트에있는 각각의 아이템 값~
       //이미지뽑기
@@ -41,11 +42,10 @@ fetch(
       ul.setAttribute("style", "display: flex");
 
       // const arr = createElement("new_Array");
-    
       // var1.append[div];
       // console.log(var1)
-    
 
+      //7월 뽑기!!
     }
   })
   .catch((err) => console.error(err));
