@@ -1,5 +1,42 @@
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* header */
+header {
+  width: 100%;
+  min-width: 340px;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+}
+header #logo {
+  height: 60px;
+}
+header #logo img {
+  height: 100%;
+}
+header #logo h1 {
+  visibility: hidden;
+  text-indent: -9999px;
+}
+header #search {
+  display: block;
+  height: 38px;
+  width: 38px;
+}
+header #search img {
+  height: 100%;
+}
+
 .container {
   display: flex;
+  overflow-x: scroll;
 }
 
 .card {

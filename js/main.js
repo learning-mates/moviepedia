@@ -21,6 +21,7 @@ fetch(options.url, options)
       // 7월
       let month_check = Number(item.END_DATE.slice(4, 6)) === this_month;
       let day_check = Number(item.END_DATE.slice(6, 8)) >= date.getDate();
+
       if (month_check && day_check) {
         const card = document.createElement("div");
         const item_img = document.createElement("img");
@@ -30,7 +31,7 @@ fetch(options.url, options)
         item_date.innerHTML = `${item.START_DATE} - ${item.END_DATE}`;
         item_tit.innerText = item.TITLE;
         item_img.src = item.FILE_URL_MI;
-        item_img.setAttribute("width", "300px");
+        item_img.setAttribute("width", "340px");
         desc_list.append(item_tit, item_date);
         card.append(item_img, desc_list);
         card.classList.add("card");
