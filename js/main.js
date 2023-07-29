@@ -18,21 +18,26 @@ fetch(options.url, options)
     let this_month = Number(date.getMonth()) + 1;
 
     for (item of list.reverse()) {
-      // 7월
+      // 이번 달 공연만 보여주기
       let month_check = Number(item.END_DATE.slice(4, 6)) === this_month;
+      // 오늘부터 볼 수 있는 공연만 보여주기
       let day_check = Number(item.END_DATE.slice(6, 8)) >= date.getDate();
+      // 한글 제목만 보여주기(같은 공연 영문명 제외)
+      const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+      let korean_check = korean.test(item.TICKET_INFO);
 
-      if (month_check && day_check) {
+      if (month_check && day_check && (!item.TICKET_INFO || korean_check)) {
         const card = document.createElement("div");
         const item_img = document.createElement("img");
         const desc_list = document.createElement("ul");
         const item_tit = document.createElement("li");
         const item_date = document.createElement("li");
+        const item_info = document.createElement("li");
         item_date.innerHTML = `${item.START_DATE} - ${item.END_DATE}`;
         item_tit.innerText = item.TITLE;
+        item_info.innerText = item.TICKET_INFO;
         item_img.src = item.FILE_URL_MI;
-        // item_img.setAttribute("width", "340px");
-        desc_list.append(item_tit, item_date);
+        desc_list.append(item_tit, item_date, item_info);
         card.append(item_img, desc_list);
         card.classList.add("card");
         container.append(card);
