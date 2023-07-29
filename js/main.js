@@ -31,7 +31,7 @@ fetch(options.url, options)
         item_date.innerHTML = `${item.START_DATE} - ${item.END_DATE}`;
         item_tit.innerText = item.TITLE;
         item_img.src = item.FILE_URL_MI;
-        item_img.setAttribute("width", "340px");
+        // item_img.setAttribute("width", "340px");
         desc_list.append(item_tit, item_date);
         card.append(item_img, desc_list);
         card.classList.add("card");
