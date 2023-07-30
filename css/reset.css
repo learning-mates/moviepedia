@@ -15,7 +15,15 @@ h4,
 h5,
 h6,
 a,
-li {
+li,
+input,
+*::placeholder {
   font-family: "Montserrat", "Noto Sans KR", sans-serif;
   color: #080404;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  display: none;
 }

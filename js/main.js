@@ -43,13 +43,23 @@ fetch(options.url, options)
   .then((response) => response.json())
   .then((response) => {
     console.log(response);
-    const container = document.querySelector(".container");
     const list = response.SJWPerform.row;
+    const container = document.querySelector(".container");
+    const btn_next_month = document.createElement("div");
+    const span_month = document.createElement("span");
+    const ico_arrow = document.createElement("i");
+    ico_arrow.classList.add("fa-solid");
+    ico_arrow.classList.add("fa-arrow-right");
+    ico_arrow.setAttribute("style", "color: #ffffff;");
+    span_month.innerHTML = `${this_month + 1}월`;
+    btn_next_month.append(span_month, ico_arrow);
+    btn_next_month.classList.add("btn_next_month");
+    container.append(btn_next_month);
 
     // 공연이 있는 날 찾기
     let has_event_days = new Set();
 
-    for (item of list.reverse()) {
+    for (item of list) {
       // 이번 달 공연만 보여주기
       let month_check = Number(item.END_DATE.slice(4, 6)) === this_month;
       // 오늘부터 볼 수 있는 공연만 보여주기
@@ -85,13 +95,12 @@ fetch(options.url, options)
         // card.append(item_img, desc_list);
         card.append(item_img);
         card.classList.add("card");
-        container.append(card);
+        container.prepend(card);
       }
     }
 
     // 공연 있는 날짜를 달력에 표시하기
     const event_days = [...has_event_days];
-    console.log(event_days);
     const rest_days = document.querySelectorAll(".calendar .rest span");
 
     event_days.forEach((e) => {

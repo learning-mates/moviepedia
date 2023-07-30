@@ -27,14 +27,37 @@ header #logo {
   cursor: pointer;
 }
 header #search {
+  width: 300px;
+}
+header #search input {
+  width: 80%;
+  height: 40px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+header #search input::placeholder {
+  visibility: hidden;
+  font-size: 1.2rem;
+  color: #ddd;
+}
+header #search input:focus::placeholder {
+  visibility: visible;
+}
+
+header #search .search_btn {
   height: 34px;
   width: 34px;
   background-image: url("../img/btn-sch.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  background-color: transparent;
   outline: none;
   border: none;
+  text-indent: -9999px;
   cursor: pointer;
 }
 
@@ -46,6 +69,22 @@ header #search {
   justify-content: flex-start;
   align-items: end;
   height: 76vh;
+}
+.container .btn_next_month {
+  min-width: 80px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #080404;
+  color: white;
+  text-align: center;
+  line-height: 80px;
+  font-size: 1.2rem;
+  margin: 0 20px;
+  margin-bottom: calc(38vh - 40px);
+}
+.container .btn_next_month span {
+  margin-right: 5px;
 }
 
 .card {
