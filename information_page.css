@@ -38,7 +38,7 @@ header {
 }
 
 .info img {
-  width: 400px;
+  width: 350px;
   height: 500px;
   background-color: blue;
   justify-content: center;
@@ -50,6 +50,7 @@ header {
 }
 
 .info .title {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: bolder;
+  width: 700px;
 }
