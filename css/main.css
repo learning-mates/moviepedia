@@ -14,6 +14,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
+  border-bottom: 1px solid #aaa;
   z-index: 1000;
 }
 header #logo {
@@ -81,6 +82,7 @@ header #search {
   flex-grow: 1;
   display: flex;
   justify-content: space-around;
+  /* align-items: center; */
   padding: 0 10px;
   background-color: #161111;
 }
@@ -89,9 +91,25 @@ header #search {
   flex-basis: 30px;
   padding: 0 3px;
 }
+
 .calendar .days .prev {
   color: #666;
 }
-.calendar .days .available {
+.calendar .days .rest {
   color: #ddd;
+}
+.calendar .days .rest .available {
+  position: relative;
+}
+.calendar .days .rest .available::after {
+  display: block;
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: greenyellow;
+  position: absolute;
+  top: -10px;
+  left: calc(50% - 2.5px);
+  box-sizing: border-box;
 }

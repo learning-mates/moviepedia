@@ -14,13 +14,15 @@ let getCalendar = function () {
   cal_month.innerHTML = `${this_month}월`;
   for (let i = 1; i <= last_day; i++) {
     const cal_days_day = document.createElement("li");
+    const span = document.createElement("span");
+    span.innerHTML = i;
     cal_days_day.classList.add("day");
-    cal_days_day.innerHTML = i;
+    cal_days_day.append(span);
 
     if (i < today) {
       cal_days_day.classList.add("prev");
     } else {
-      cal_days_day.classList.add("available");
+      cal_days_day.classList.add("rest");
     }
     cal_days.append(cal_days_day);
   }
@@ -44,6 +46,9 @@ fetch(options.url, options)
     const container = document.querySelector(".container");
     const list = response.SJWPerform.row;
 
+    // 공연이 있는 날 찾기
+    let has_event_days = new Set();
+
     for (item of list.reverse()) {
       // 이번 달 공연만 보여주기
       let month_check = Number(item.END_DATE.slice(4, 6)) === this_month;
@@ -54,6 +59,18 @@ fetch(options.url, options)
       let korean_check = korean.test(item.TICKET_INFO);
 
       if (month_check && day_check && (!item.TICKET_INFO || korean_check)) {
+        // 공연이 있는 날짜
+        let start_date = Number(item.START_DATE.slice(6, 8));
+        let end_date = Number(item.END_DATE.slice(6, 8));
+        if (item.START_DATE !== item.END_DATE) {
+          for (let i = start_date; i <= end_date; i++) {
+            has_event_days.add(i);
+          }
+        } else {
+          has_event_days.add(start_date);
+        }
+
+        // container에 card 넣기
         const card = document.createElement("div");
         const item_img = document.createElement("img");
         const desc_list = document.createElement("ul");
@@ -71,5 +88,18 @@ fetch(options.url, options)
         container.append(card);
       }
     }
+
+    // 공연 있는 날짜를 달력에 표시하기
+    const event_days = [...has_event_days];
+    console.log(event_days);
+    const rest_days = document.querySelectorAll(".calendar .rest span");
+
+    event_days.forEach((e) => {
+      for (let day of rest_days) {
+        if (day.innerText === String(e)) {
+          day.classList.add("available");
+        }
+      }
+    });
   })
   .catch((err) => console.error(err));
