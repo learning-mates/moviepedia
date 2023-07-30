@@ -9,41 +9,46 @@ header {
   width: 100%;
   height: 12vh;
   min-width: 340px;
-  min-height: 100px;
   background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
+  z-index: 1000;
 }
 header #logo {
-  height: 60px;
-}
-header #logo img {
-  height: 100%;
-}
-header #logo h1 {
-  visibility: hidden;
+  width: 300px;
+  background-image: url(../img/logo.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
   text-indent: -9999px;
+  cursor: pointer;
 }
 header #search {
-  display: block;
-  height: 38px;
-  width: 38px;
-}
-header #search img {
-  height: 100%;
+  height: 34px;
+  width: 34px;
+  background-image: url("../img/btn-sch.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* poster section */
 .container {
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
   justify-content: flex-start;
+  align-items: end;
+  height: 76vh;
 }
 
 .card {
-  height: 76vh;
+  height: 100%;
 }
 .card img {
   height: 100%;

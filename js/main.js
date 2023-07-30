@@ -65,7 +65,8 @@ fetch(options.url, options)
         item_info.innerText = item.TICKET_INFO;
         item_img.src = item.FILE_URL_MI;
         desc_list.append(item_tit, item_date, item_info);
-        card.append(item_img, desc_list);
+        // card.append(item_img, desc_list);
+        card.append(item_img);
         card.classList.add("card");
         container.append(card);
       }
