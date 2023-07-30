@@ -7,3 +7,15 @@ ul,
 ol {
   list-style: none;
 }
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+li {
+  font-family: "Montserrat", "Noto Sans KR", sans-serif;
+  color: #080404;
+}

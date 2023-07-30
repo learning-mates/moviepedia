@@ -1,3 +1,32 @@
+let date = new Date();
+let today = date.getDate();
+let this_month = Number(date.getMonth()) + 1;
+
+let getCalendar = function () {
+  let this_year = date.getFullYear();
+  let last_day = new Date(this_year, this_month, 0);
+  last_day = last_day.getDate();
+
+  const calendar = document.querySelector(".calendar");
+  const cal_month = document.querySelector(".calendar .month");
+  const cal_days = document.querySelector(".calendar .days");
+
+  cal_month.innerHTML = `${this_month}월`;
+  for (let i = 1; i <= last_day; i++) {
+    const cal_days_day = document.createElement("li");
+    cal_days_day.classList.add("day");
+    cal_days_day.innerHTML = i;
+
+    if (i < today) {
+      cal_days_day.classList.add("prev");
+    } else {
+      cal_days_day.classList.add("available");
+    }
+    cal_days.append(cal_days_day);
+  }
+};
+getCalendar();
+
 // 세종문화회관 공연전시 데이터 API 연결
 const options = {
   method: "GET",
@@ -14,8 +43,6 @@ fetch(options.url, options)
     console.log(response);
     const container = document.querySelector(".container");
     const list = response.SJWPerform.row;
-    let date = new Date();
-    let this_month = Number(date.getMonth()) + 1;
 
     for (item of list.reverse()) {
       // 이번 달 공연만 보여주기
