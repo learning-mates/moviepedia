@@ -44,13 +44,15 @@ fetch(options.url, options)
   .then((response) => {
     console.log(response);
     const list = response.SJWPerform.row;
+
+    // container 마지막에 다음 달로 넘어가는 버튼 추가
     const container = document.querySelector(".container");
     const btn_next_month = document.createElement("div");
     const span_month = document.createElement("span");
     const ico_arrow = document.createElement("i");
     ico_arrow.classList.add("fa-solid");
     ico_arrow.classList.add("fa-arrow-right");
-    ico_arrow.setAttribute("style", "color: #ffffff;");
+    ico_arrow.setAttribute("style", "color: greenyellow;");
     span_month.innerHTML = `${this_month + 1}월`;
     btn_next_month.append(span_month, ico_arrow);
     btn_next_month.classList.add("btn_next_month");
