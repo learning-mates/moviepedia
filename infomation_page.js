@@ -7,7 +7,7 @@ const options = {
   },
 };
 fetch(
-  "http://openAPI.seoul.go.kr:8088/4366736a41676b7331303174666a4a71/json/SJWPerform/1/130",
+  "http://openAPI.seoul.go.kr:8088/4366736a41676b7331303174666a4a71/json/SJWPerform/1/1",
   options
 )
   .then((response) => response.json())
@@ -18,6 +18,10 @@ fetch(
     const ul = document.querySelector("ul"); // ul 태그 선택
     const img = document.querySelector(".info img");
     const liTitle = document.querySelector(".title");
+    const li = document.querySelector("li");
+    let year = item.START_DATE.slice(0, 3);
+    // nums.splice(5, 0, -5, -6, -7)
+    console.log(list);
     // console.log(list[0]);
     // body.append(list[0].AGE);
     //잘 나오는지 확인!!
@@ -29,6 +33,16 @@ fetch(
 
       const TITLE = item.TITLE;
       liTitle.innerText = `${TITLE}`;
+      const date = document.createElement("li");
+      date.innerText = `${item.START_DATE} ~ ${item.END_DATE}`;
+
+      // const START_DATE = item.START_DATE;
+      // const END_DATE = item.END_DATE;
+      const place = item.PLACE_NAME;
+      const time = item.PLAY_TIME;
+      const AGE = item.AGE;
+      const ticket = item.TICKET_INFO;
+      ul.append(date);
 
       //row 아이템을 받았으묜
       // const li = document.createElement("li"); // li를 선택해서 태그를 만들어주고
