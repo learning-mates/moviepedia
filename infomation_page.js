@@ -17,9 +17,9 @@ fetch(
     let list = response.SJWPerform.row; //응답받은 값의 row 배열을 받음
     const ul = document.querySelector("ul"); // ul 태그 선택
     const img = document.querySelector(".info img");
-    const liTitle = document.querySelector(".title");
+    const h2 = document.querySelector("h2");
     const li = document.querySelector("li");
-    let year = item.START_DATE.slice(0, 3);
+    // const year = item.START_DATE.slice(0, 3);
     // nums.splice(5, 0, -5, -6, -7)
     console.log(list);
     // console.log(list[0]);
@@ -27,22 +27,39 @@ fetch(
     //잘 나오는지 확인!!
     for (item of list) {
       //이 리스트에있는 각각의 아이템 값~
+
       //이미지뽑기
       const img_src = item.FILE_URL_MI;
       img.setAttribute("src", `${img_src}`);
 
+      // 제목 뽑기
       const TITLE = item.TITLE;
-      liTitle.innerText = `${TITLE}`;
+      h2.innerText = `${TITLE}`;
+
+      //시간 뽑기
       const date = document.createElement("li");
       date.innerText = `${item.START_DATE} ~ ${item.END_DATE}`;
 
       // const START_DATE = item.START_DATE;
       // const END_DATE = item.END_DATE;
-      const place = item.PLACE_NAME;
-      const time = item.PLAY_TIME;
-      const AGE = item.AGE;
-      const ticket = item.TICKET_INFO;
-      ul.append(date);
+
+      //장소 뽑기
+      const place = document.createElement("li")
+      place.innerText = item.PLACE_NAME;
+
+      //시간
+      const Ctime = document.createElement("li")
+      Ctime.innerText = item.PLAY_TIME;
+
+
+      //나이제한
+      const age = document.createElement("li")
+      age.innerText = item.AGE
+
+      //티켓정보
+      const ticket = document.createElement("li")
+      ticket.innerText = item.TICKET_INFO
+      ul.append(date,place,Ctime,age);
 
       //row 아이템을 받았으묜
       // const li = document.createElement("li"); // li를 선택해서 태그를 만들어주고
