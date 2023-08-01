@@ -74,6 +74,8 @@ header #search .search_btn {
   min-width: 80px;
   width: 80px;
   height: 80px;
+  border: none;
+  outline: none;
   border-radius: 50%;
   background-color: #080404;
   color: white;
@@ -82,9 +84,7 @@ header #search .search_btn {
   font-size: 1.2rem;
   margin: 0 20px;
   margin-bottom: calc(38vh - 40px);
-}
-.container .btn_next_month span {
-  margin-right: 5px;
+  cursor: pointer;
 }
 
 .card {
@@ -130,17 +130,10 @@ header #search .search_btn {
   flex-basis: 30px;
   padding: 0 3px;
 }
-
-.calendar .days .prev {
-  color: #666;
-}
-.calendar .days .rest {
-  color: #ddd;
-}
-.calendar .days .rest .available {
+.calendar .days .today span {
   position: relative;
 }
-.calendar .days .rest .available::after {
+.calendar .days .today span::after {
   display: block;
   content: "";
   width: 5px;
@@ -151,4 +144,11 @@ header #search .search_btn {
   top: -10px;
   left: calc(50% - 2.5px);
   box-sizing: border-box;
+}
+
+.calendar .days .prev {
+  color: #666;
+}
+.calendar .days .rest {
+  color: #ddd;
 }
