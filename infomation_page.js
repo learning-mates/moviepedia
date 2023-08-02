@@ -6,10 +6,14 @@ const options = {
     // 인증키  4366736a41676b7331303174666a4a71
   },
 };
-fetch(
-  "http://openAPI.seoul.go.kr:8088/4366736a41676b7331303174666a4a71/json/SJWPerform/1/1",
-  options
-)
+
+const url =
+  "http://openAPI.seoul.go.kr:8088/4366736a41676b7331303174666a4a71/json/SJWPerform/1/130";
+
+let code = "/pi2303280841a01";
+let C_url = url + code;
+console.log(C_url);
+fetch(C_url, options)
   .then((response) => response.json())
   .then((response) => {
     console.log(response); //response에 값이 다 담겨있음! 이걸 콘솔로그로보여줌 ㅇ_ㅇ
@@ -19,6 +23,8 @@ fetch(
     const img = document.querySelector(".info img");
     const h2 = document.querySelector("h2");
     const li = document.querySelector("li");
+
+    // const code = item.PERFORM_CODE;
     // const year = item.START_DATE.slice(0, 3);
     // nums.splice(5, 0, -5, -6, -7)
     console.log(list);
@@ -38,28 +44,34 @@ fetch(
 
       //시간 뽑기
       const date = document.createElement("li");
-      date.innerText = `${item.START_DATE} ~ ${item.END_DATE}`;
+      const Syear = Number(item.START_DATE.slice(0, 4));
+      const Smonth = Number(item.START_DATE.slice(4, 6));
+      const Sday = Number(item.START_DATE.slice(6, 8));
+      const Eyear = Number(item.END_DATE.slice(0, 4));
+      const Emonth = Number(item.END_DATE.slice(4, 6));
+      const Eday = Number(item.END_DATE.slice(6, 8));
+
+      date.innerText = `${Syear}년 ${Smonth}월 ${Sday}일 ~ ${Eyear}년 ${Emonth}월 ${Eday}일`;
 
       // const START_DATE = item.START_DATE;
       // const END_DATE = item.END_DATE;
 
       //장소 뽑기
-      const place = document.createElement("li")
+      const place = document.createElement("li");
       place.innerText = item.PLACE_NAME;
 
       //시간
-      const Ctime = document.createElement("li")
+      const Ctime = document.createElement("li");
       Ctime.innerText = item.PLAY_TIME;
 
-
       //나이제한
-      const age = document.createElement("li")
-      age.innerText = item.AGE
+      const age = document.createElement("li");
+      age.innerText = item.AGE;
 
       //티켓정보
-      const ticket = document.createElement("li")
-      ticket.innerText = item.TICKET_INFO
-      ul.append(date,place,Ctime,age);
+      const ticket = document.createElement("li");
+      ticket.innerText = item.TICKET_INFO;
+      ul.append(date, place, Ctime, age);
 
       //row 아이템을 받았으묜
       // const li = document.createElement("li"); // li를 선택해서 태그를 만들어주고
