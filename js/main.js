@@ -95,10 +95,6 @@ function getCalendar(date) {
     }
     cal_days.append(cal_days_day);
   }
-
-  // 오늘 표시
-  const cal_today = calendar.querySelector(".rest");
-  cal_today.classList.add("today");
 }
 
 // 다음 달로 넘어가는 버튼 제어
@@ -123,3 +119,6 @@ btn_next_month.addEventListener("click", function () {
 // 화면에 나타내기
 getEventPosters(date);
 getCalendar(date);
+// 오늘 표시
+const cal_today = document.querySelector(".calendar .rest");
+cal_today.classList.add("today");
