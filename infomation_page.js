@@ -51,7 +51,11 @@ fetch(C_url, options)
       const Emonth = Number(item.END_DATE.slice(4, 6));
       const Eday = Number(item.END_DATE.slice(6, 8));
 
-      date.innerText = `${Syear}년 ${Smonth}월 ${Sday}일 ~ ${Eyear}년 ${Emonth}월 ${Eday}일`;
+      if (item.START_DATE === item.END_DATE) {
+        date.innerText = `${Syear}년 ${Smonth}월 ${Sday}일`;
+      } else {
+        date.innerText = `${Syear}년 ${Smonth}월 ${Sday}일 ~ ${Eyear}년 ${Emonth}월 ${Eday}일`;
+      }
 
       // const START_DATE = item.START_DATE;
       // const END_DATE = item.END_DATE;
@@ -59,6 +63,9 @@ fetch(C_url, options)
       //장소 뽑기
       const place = document.createElement("li");
       place.innerText = item.PLACE_NAME;
+      const place2 = document.querySelector("ul .place");
+      place2.setAttribute("style", "display: flex");
+      place2.append(place);
 
       //시간
       const Ctime = document.createElement("li");
@@ -71,7 +78,12 @@ fetch(C_url, options)
       //티켓정보
       const ticket = document.createElement("li");
       ticket.innerText = item.TICKET_INFO;
-      ul.append(date, place, Ctime, age);
+
+      //문의
+      const qna = document.createElement("li");
+      qna.innerText = item.INQUIRY_PHONE;
+
+      ul.append(date, Ctime, age, ticket, qna);
 
       //row 아이템을 받았으묜
       // const li = document.createElement("li"); // li를 선택해서 태그를 만들어주고
