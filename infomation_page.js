@@ -42,8 +42,8 @@ fetch(C_url, options)
       const TITLE = item.TITLE;
       h2.innerText = `${TITLE}`;
 
-      //시간 뽑기
-      const date = document.createElement("li");
+      //날짜 뽑기
+      const date = document.querySelector(".detail .WHEN dd");
       const Syear = Number(item.START_DATE.slice(0, 4));
       const Smonth = Number(item.START_DATE.slice(4, 6));
       const Sday = Number(item.START_DATE.slice(6, 8));
@@ -51,39 +51,40 @@ fetch(C_url, options)
       const Emonth = Number(item.END_DATE.slice(4, 6));
       const Eday = Number(item.END_DATE.slice(6, 8));
 
+      //중복 제거
       if (item.START_DATE === item.END_DATE) {
         date.innerText = `${Syear}년 ${Smonth}월 ${Sday}일`;
       } else {
         date.innerText = `${Syear}년 ${Smonth}월 ${Sday}일 ~ ${Eyear}년 ${Emonth}월 ${Eday}일`;
       }
 
+      // WHEN.append(date);
+
       // const START_DATE = item.START_DATE;
       // const END_DATE = item.END_DATE;
 
       //장소 뽑기
-      const place = document.createElement("li");
-      place.innerText = item.PLACE_NAME;
-      const place2 = document.querySelector("ul .place");
-      place2.setAttribute("style", "display: flex");
-      place2.append(place);
+      // const place = document.createElement("dd");
+      // place.innerText = item.PLACE_NAME;
+      const PLACE = document.querySelector(".detail .PLACE dd");
+      PLACE.innerText = item.PLACE_NAME;
 
       //시간
-      const Ctime = document.createElement("li");
-      Ctime.innerText = item.PLAY_TIME;
+
+      const TIME = document.querySelector(".detail .TIME dd");
+      TIME.innerText = item.PLAY_TIME;
 
       //나이제한
-      const age = document.createElement("li");
-      age.innerText = item.AGE;
+      const AGE = document.querySelector(".detail .AGE dd");
+      AGE.innerText = item.AGE;
 
       //티켓정보
-      const ticket = document.createElement("li");
-      ticket.innerText = item.TICKET_INFO;
+      const TICKET = document.querySelector(".detail .TICKET dd");
+      TICKET.innerText = item.TICKET_INFO;
 
       //문의
-      const qna = document.createElement("li");
-      qna.innerText = item.INQUIRY_PHONE;
-
-      ul.append(date, Ctime, age, ticket, qna);
+      const QNA = document.querySelector(".detail .QNA dd");
+      QNA.innerText = item.INQUIRY_PHONE;
 
       //row 아이템을 받았으묜
       // const li = document.createElement("li"); // li를 선택해서 태그를 만들어주고

@@ -29,9 +29,9 @@ header .main-menu img {
   margin-left: -30px;
 }
 
-.search {
-  font-size: 50px;
-  margin-left: 300px;
+.search i {
+  font-size: 60px;
+  margin-left: 100px;
   margin-top: 40px;
 }
 
@@ -86,6 +86,7 @@ main .text h2 {
   text-align: center;
   padding-top: 22px;
   font-weight: bold;
+  margin-top: 50px;
 }
 
 .reserve {
@@ -95,13 +96,17 @@ main .text h2 {
 }
 
 /* 공연 상제성보 편집 */
-
+/* 
 ul li {
   font-size: 20px;
   color: black;
-  /* margin-bottom: px; */
+} */
+
+main dl dt {
+  float: left;
+  margin-left: 10px;
 }
 
-ul .place li {
-  margin-left: 20px;
+main dl dd {
+  margin-left: 60px;
 }
